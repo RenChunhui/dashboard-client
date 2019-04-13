@@ -1,3 +1,6 @@
+$sidebar-width: 192px;
+$panel-width: 210px;
+
 /*
  * Navbar
  */
@@ -5,7 +8,7 @@
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: 1rem;
-  width: 192px;
+  width: $sidebar-width;
   background-color: rgba(0, 0, 0, .25);
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
 }
@@ -16,7 +19,7 @@
   bottom: 0;
   left: 0;
   z-index: 100;
-  width: 192px;
+  width: $sidebar-width;
   padding: 48px 0 0;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
@@ -27,6 +30,19 @@
   bottom: 0;
   right: 0;
   z-index: 100; /* Behind the navbar */
+  width: $panel-width;
   padding: 48px 0 0; /* Height of navbar */
   box-shadow: inset 1px 0 0 rgba(0, 0, 0, .1);
+}
+
+/*
+ * Content
+ */
+[role="main"] {
+  position: fixed;
+  top: 48px;
+  right: $panel-width;
+  bottom: 0;
+  left: $sidebar-width;
+  overflow: scroll;
 }

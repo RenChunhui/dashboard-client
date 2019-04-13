@@ -1,7 +1,9 @@
-import { Directive, HostListener, Output, EventEmitter, ElementRef, OnDestroy, Input } from "@angular/core";
+import { Directive, HostListener, Output, EventEmitter, ElementRef, OnDestroy, Input, OnInit, HostBinding } from "@angular/core";
 import { NgDragDropService } from '../drag-drop.service';
 
-@Directive({ selector: '[ngDrag]' })
+@Directive({
+  selector: '[ngDrag]'
+})
 export class NgDragDirective implements OnDestroy {
   /**
    * 定义拖动数据
@@ -48,12 +50,21 @@ export class NgDragDirective implements OnDestroy {
   }
 
   /**
+   * 启动拖动属性
+   */
+  @HostBinding('draggable')
+  get draggable() {
+    return true;
+  }
+
+  /**
    * @private
    * @param event
    */
   @HostListener('dragstart', ['$event'])
   private onDragStartHandler(event) {
-    event.stopPropagation();
+    console.log('drag start',this.dragData);
+    // event.stopPropagation();
     event.dataTransfer.dropEffect = this.effect;
 
     this.ngDragDropService.dragData = this.dragData;
@@ -69,6 +80,7 @@ export class NgDragDirective implements OnDestroy {
    */
   @HostListener('drag', ['$event'])
   private onDragHandler(event) {
+    console.log('drag')
     this.onDrag.emit(event);
   }
 
@@ -78,6 +90,7 @@ export class NgDragDirective implements OnDestroy {
    */
   @HostListener('dragend', ['$event'])
   private onDragEndHandler(event) {
+    console.log('drag end')
     this.ngDragDropService.onDragEnd.next(event);
     this.onDragEnd.emit(event);
     event.stopPropagation();

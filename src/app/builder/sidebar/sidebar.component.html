@@ -8,7 +8,7 @@
     <!-- widgets -->
     <ul class="nav d-flex flex-wrap">
       <li class="nav-item px-0" *ngFor="let item of group.group">
-        <a class="nav-link p-0">
+        <a ngDrag [dragData]="item.type" class="nav-link p-0">
           <i class="iconfont" [ngClass]="item.icon"></i>
           <span>{{item.label}}</span>
         </a>

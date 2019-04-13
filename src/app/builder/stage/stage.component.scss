@@ -1,0 +1,22 @@
+.fb-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  padding: 10px;
+}
+
+.fb-cell {
+  min-height: 75px;
+  flex-grow: 1;
+  flex-basis: 100%;
+}
+
+.highlight {
+  outline: 1px dashed rgba(170,170,170,0.7);
+  outline-offset: -2px;
+}
+
+.highlight-active {
+  outline: 3px solid #3b97e3 !important;
+}

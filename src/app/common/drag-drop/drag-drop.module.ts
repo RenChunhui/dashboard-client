@@ -10,6 +10,10 @@ import { NgDragDropService } from './drag-drop.service';
   ],
   providers: [
     NgDragDropService
+  ],
+  exports: [
+    NgDragDirective,
+    NgDropDirective
   ]
 })
 export class NgDragDropModule {}

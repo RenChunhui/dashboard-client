@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StageComponent } from './stage.component';
+import { StageService } from './stage.service';
 
 @NgModule({
   declarations: [StageComponent],
@@ -8,6 +9,7 @@ import { StageComponent } from './stage.component';
     CommonModule
   ],
   exports:[StageComponent],
+  providers: [StageService],
   bootstrap: [StageComponent]
 })
 export class StageModule { }

@@ -16,10 +16,10 @@ export class NgDragDropService {
   /**
    * 开始拖拽
    */
-  public onDragStart:BehaviorSubject<any> = new BehaviorSubject<any>;
+  public onDragStart:BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   /**
    * 结束拖拽
    */
-  public onDragEnd:BehaviorSubject<any> = new BehaviorSubject<any>;
+  public onDragEnd:BehaviorSubject<any> = new BehaviorSubject<any>(null);
 }

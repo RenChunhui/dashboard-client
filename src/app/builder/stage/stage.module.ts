@@ -6,6 +6,8 @@ import { StageComponent } from './stage.component';
   declarations: [StageComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports:[StageComponent],
+  bootstrap: [StageComponent]
 })
 export class StageModule { }

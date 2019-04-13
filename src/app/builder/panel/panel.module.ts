@@ -6,6 +6,8 @@ import { PanelComponent } from './panel.component';
   declarations: [PanelComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports:[PanelComponent],
+  bootstrap: [PanelComponent]
 })
 export class PanelModule { }

@@ -1,0 +1,46 @@
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.nav-item {
+  width: 64px;
+  height: 64px;
+}
+
+.nav-link {
+  position: relative;
+  font-size: 12px;
+  width: 64px;
+  height: 64px;
+  outline: 1px dashed rgba(170,170,170,0.7);
+  outline-offset: -2px;
+
+  i {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    top: 12px;
+    left: 20px;
+  }
+
+  span {
+    position: absolute;
+    width: 64px;
+    line-height: 14px;
+    bottom: 12px;
+    text-align: center;
+  }
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}

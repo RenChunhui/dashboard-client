@@ -14,7 +14,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build"
+    "build": "ng build --aot=true --buildOptimizer=true --extractCss=true --extractLicenses=true --optimization=true --prod=true"
   },
   "private": true,
   "dependencies": {

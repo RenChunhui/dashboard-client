@@ -12,4 +12,7 @@ export class StageComponent implements OnInit {
   ngOnInit() {
   }
 
+  onDragOver(event) {
+    console.log('event:',event.offsetY);
+  }
 }

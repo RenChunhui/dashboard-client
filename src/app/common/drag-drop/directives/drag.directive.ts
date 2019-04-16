@@ -63,8 +63,7 @@ export class NgDragDirective implements OnDestroy {
    */
   @HostListener('dragstart', ['$event'])
   private onDragStartHandler(event) {
-    console.log('drag start',this.dragData);
-    // event.stopPropagation();
+    event.stopPropagation();
     event.dataTransfer.dropEffect = this.effect;
 
     this.ngDragDropService.dragData = this.dragData;
@@ -80,7 +79,6 @@ export class NgDragDirective implements OnDestroy {
    */
   @HostListener('drag', ['$event'])
   private onDragHandler(event) {
-    console.log('drag')
     this.onDrag.emit(event);
   }
 
@@ -90,7 +88,6 @@ export class NgDragDirective implements OnDestroy {
    */
   @HostListener('dragend', ['$event'])
   private onDragEndHandler(event) {
-    console.log('drag end')
     this.ngDragDropService.onDragEnd.next(event);
     this.onDragEnd.emit(event);
     event.stopPropagation();

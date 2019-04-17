@@ -1,8 +1,12 @@
 <h3 class="text-center">Form Builder</h3>
-<form ngDrop (onDragOver)="onDragOver($event)" class="highlight">
-  <div class="fb-row highlight">
-    <div class="fb-cell highlight">
-      <!-- <p class="h3 text-center">Form Builder</p> -->
+<form ngDrop (onDragOver)="onDragOver($event)" (onDrop)="onDrop($event)" [dropScope]="'container'" class="highlight">
+  <!-- 初使化时给一个提示 -->
+  <div class="fb-row highlight" *ngIf="stageService.store.length === 0">
+    <div class="fb-cell highlight d-flex justify-content-center align-items-center">
+      <label class="text-muted mb-0">Drag and drop the container to the current area.</label>
     </div>
   </div>
+
+  <!-- 渲染行 -->
+  <div ng-row ngWidget class="fb-row" *ngFor="let row of stageService.store"></div>
 </form>

@@ -25,4 +25,9 @@ export interface WidgetGroupConfig {
    * 类型
    */
   readonly type: string;
+
+  /**
+   * 匹配
+   */
+  readonly scope: 'container' | 'widget';
 }

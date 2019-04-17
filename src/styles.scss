@@ -4,6 +4,20 @@
   display: none;
 }
 
+@import './styles/variables';
 @import './styles/dragdrop';
+
+// 必需
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// 可选
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/list-group";
 
 @import "~bootstrap/scss/bootstrap";

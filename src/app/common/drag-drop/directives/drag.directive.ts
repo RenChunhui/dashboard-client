@@ -13,7 +13,7 @@ export class NgDragDirective implements OnDestroy {
   /**
    * 用户定义拖动范围
    */
-  @Input() dragScope: string;
+  @Input() dragScope: string | Array<string> = 'default';
 
   /**
    * 定义拖动效果

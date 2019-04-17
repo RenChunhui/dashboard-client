@@ -1,34 +1,35 @@
 import { Injectable } from "@angular/core";
 import { WidgetConfig } from './sidebar.interface';
+import { WidgetEnum } from './sidebar.enum';
 
 @Injectable()
 export class SidebarService {
   public widgetConfig: WidgetConfig[] = [
     {
-      label: '布局容器',
+      label: 'layout container',
       group: [
-        { label: '容器', type: 'box', icon: 'iconlayout' }
+        { label: 'container', type: WidgetEnum.container, icon: 'iconlayout', scope: 'container' }
       ]
     },
     {
-      label: '基本组件',
+      label: 'base component',
       group: [
-        { label: '标题', type: 'label', icon: 'iconbiaoti' },
-        { label: '单行文本', type: 'input', icon: 'iconinput' },
-        { label: '多行文本', type: 'textarea', icon: 'icontextarea1' },
-        { label: '单选框', type: 'radio', icon: 'iconcheck-circle' },
-        { label: '多选框', type: 'checkbox', icon: 'iconcheck-square' },
-        { label: '下拉框', type: 'select', icon: 'icondown-square' },
-        { label: '日期时间', type: 'datetime', icon: 'iconcalendar' },
-        { label: '按钮', type: 'button', icon: 'iconanniu' }
+        { label: 'label', type: WidgetEnum.label, icon: 'iconbiaoti', scope: 'widget' },
+        { label: 'input', type: WidgetEnum.input, icon: 'iconinput', scope: 'widget' },
+        { label: 'textarea', type: WidgetEnum.textarea, icon: 'icontextarea1', scope: 'widget' },
+        { label: 'radio', type: WidgetEnum.radio, icon: 'iconcheck-circle', scope: 'widget' },
+        { label: 'checkbox', type: WidgetEnum.checkbox, icon: 'iconcheck-square', scope: 'widget' },
+        { label: 'dropdown', type: WidgetEnum.dropdown, icon: 'icondown-square', scope: 'widget' },
+        { label: 'datetime', type: WidgetEnum.datetime, icon: 'iconcalendar', scope: 'widget' },
+        { label: 'button', type: WidgetEnum.button, icon: 'iconanniu', scope: 'widget' }
       ]
     },
     {
-      label: '高级组件',
+      label: 'complex component',
       group: [
-        { label: '附件', type: 'file', icon: 'iconplus-square' },
-        { label: '表格', type: 'table', icon: 'icontable' },
-        { label: 'HTML', type: 'html', icon: 'iconcode' },
+        { label: 'file', type: WidgetEnum.file, icon: 'iconplus-square', scope: 'widget' },
+        { label: 'table', type: WidgetEnum.table, icon: 'icontable', scope: 'widget' },
+        { label: 'html', type: WidgetEnum.html, icon: 'iconcode', scope: 'widget' },
       ]
     }
   ]

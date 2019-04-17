@@ -11,7 +11,7 @@ export class NgDragDropService {
   /**
    * 定义拖动范围
    */
-  public dragScope:string;
+  public dragScope:string | Array<string>;
 
   /**
    * 开始拖拽

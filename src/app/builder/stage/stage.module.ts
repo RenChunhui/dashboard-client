@@ -3,12 +3,16 @@ import { CommonModule } from '@angular/common';
 import { StageComponent } from './stage.component';
 import { StageService } from './stage.service';
 import { NgDragDropModule } from 'src/app/common/drag-drop/drag-drop.module';
+import { WidgetModule } from '../widgets/widget.module';
 
 @NgModule({
-  declarations: [StageComponent],
   imports: [
     CommonModule,
-    NgDragDropModule
+    NgDragDropModule,
+    WidgetModule.forRoot()
+  ],
+  declarations: [
+    StageComponent,
   ],
   exports:[StageComponent],
   providers: [StageService],

@@ -21,7 +21,7 @@ import { ModuleWithProviders } from '@angular/compiler/src/core';
 @NgModule({
   imports:[
     CommonModule,
-    NgDragDropModule
+    NgDragDropModule,
   ],
   declarations: [
     WidgetDirective,
@@ -37,7 +37,7 @@ import { ModuleWithProviders } from '@angular/compiler/src/core';
     RowComponent,
     SelectComponent,
     TableComponent,
-    TextareaComponent
+    TextareaComponent,
   ],
   entryComponents: [
     ButtonComponent,

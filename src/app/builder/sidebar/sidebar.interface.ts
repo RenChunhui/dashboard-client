@@ -1,4 +1,4 @@
-export interface WidgetConfig {
+export interface SidebarConfig {
   /**
    * 组名称
    */
@@ -7,10 +7,10 @@ export interface WidgetConfig {
   /**
    * 配置数据
    */
-  readonly group: WidgetGroupConfig[];
+  readonly group: SidebarGroupConfig[];
 }
 
-export interface WidgetGroupConfig {
+export interface SidebarGroupConfig {
   /**
    * 组件名
    */

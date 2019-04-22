@@ -1,10 +1,10 @@
-import { Directive, HostListener, Output, EventEmitter, ElementRef, OnDestroy, Input, OnInit, HostBinding } from "@angular/core";
+import { Directive, HostListener, Output, EventEmitter, ElementRef, OnDestroy, Input, OnInit, HostBinding, AfterViewInit, Renderer2 } from "@angular/core";
 import { NgDragDropService } from '../drag-drop.service';
 
 @Directive({
   selector: '[ngDrag]'
 })
-export class NgDragDirective implements OnDestroy {
+export class NgDragDirective implements AfterViewInit,OnDestroy {
   /**
    * 定义拖动数据
    */
@@ -14,6 +14,11 @@ export class NgDragDirective implements OnDestroy {
    * 用户定义拖动范围
    */
   @Input() dragScope: string | Array<string> = 'default';
+
+  /**
+   * 拖拽时的样式
+   */
+  @Input() dragHandleClass = 'drag-handle';
 
   /**
    * 定义拖动效果
@@ -39,14 +44,19 @@ export class NgDragDirective implements OnDestroy {
   @Output() onDragEnd: EventEmitter<any> = new EventEmitter();
 
   constructor(
-    private el: ElementRef,
-    private ngDragDropService: NgDragDropService
+    private _el: ElementRef,
+    private _renderer:Renderer2,
+    private _ngDragDropService: NgDragDropService
   ) { }
 
+  ngAfterViewInit() {
+    this._renderer.addClass(this._el.nativeElement,this.dragHandleClass);
+  }
+
   ngOnDestroy() {
-    this.el.nativeElement.removeEventListener('dragstart', this.onDragStartHandler);
-    this.el.nativeElement.removeEventListener('drag', this.onDragHandler);
-    this.el.nativeElement.removeEventListener('dragend', this.onDragEndHandler);
+    this._el.nativeElement.removeEventListener('dragstart', this.onDragStartHandler);
+    this._el.nativeElement.removeEventListener('drag', this.onDragHandler);
+    this._el.nativeElement.removeEventListener('dragend', this.onDragEndHandler);
   }
 
   /**
@@ -66,10 +76,10 @@ export class NgDragDirective implements OnDestroy {
     event.stopPropagation();
     event.dataTransfer.dropEffect = this.effect;
 
-    this.ngDragDropService.dragData = this.dragData;
-    this.ngDragDropService.dragScope = this.dragScope;
+    this._ngDragDropService.dragData = this.dragData;
+    this._ngDragDropService.dragScope = this.dragScope;
 
-    this.ngDragDropService.onDragStart.next(event);
+    this._ngDragDropService.onDragStart.next(event);
     this.onDragStart.emit(event);
   }
 
@@ -88,7 +98,7 @@ export class NgDragDirective implements OnDestroy {
    */
   @HostListener('dragend', ['$event'])
   private onDragEndHandler(event) {
-    this.ngDragDropService.onDragEnd.next(event);
+    this._ngDragDropService.onDragEnd.next(event);
     this.onDragEnd.emit(event);
     event.stopPropagation();
     event.preventDefault();

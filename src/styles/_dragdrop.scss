@@ -22,13 +22,87 @@
   outline-offset: -2px;
 }
 
+.highlight-over {
+  position: relative;
+  outline: 1px solid $primary;
+
+  &:before {
+    content:attr(data-title);
+    position: absolute;
+    padding: 0 .5rem;
+    height: 16px;
+    line-height: 16px;
+    font-size: 10px;
+    top: -14px;
+    left: 1px;
+    color: white;
+    background-color: $primary;
+  }
+}
+
 .highlight-active {
-  outline: 3px solid #3b97e3 !important;
+  position: relative;
+  outline: 3px solid $primary !important;
+  outline-offset: -4px;
+
+  // &:after {
+  //   content: 'x';
+  //   position: absolute;
+  //   padding: 0 .5rem;
+  //   height: 1rem;
+  //   line-height: 1rem;
+  //   top: -14px;
+  //   right: 1px;
+  //   color: white;
+  //   background-color: $primary;
+  // }
 }
 
 //
 // Drag and drop
 //
+
+.drag-handle {
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
 .drag-over {
   outline: 1px dashed $primary;
+}
+
+//
+// Toolbar
+//
+.toolbar {
+  pointer-events: all;
+  position: absolute;
+  right: 1px;
+  top: -14px;
+  height: 1rem;
+  line-height: 1rem;
+  padding: 0 .25rem;
+  background-color: $primary;
+  z-index: 10;
+}
+
+.toolbar-item {
+  cursor: pointer;
+  font-size: 0.8rem !important;
+  width: 20px;
+  height: 16px;
+  line-height: 16px;
+  color: white;
+  vertical-align: middle;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }

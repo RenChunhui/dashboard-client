@@ -6,3 +6,17 @@
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
+
+.nav {
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: nowrap !important;
+}
+
+.nav-item {
+  text-align: center;
+  padding: .25rem !important;
+  font-size: 12px !important;
+  flex-grow: 1;
+  flex-basis: 100%;
+}

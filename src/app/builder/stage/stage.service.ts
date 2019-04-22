@@ -1,4 +1,5 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Renderer2 } from "@angular/core";
+import { StageStatus } from './stage-status.interface';
 
 @Injectable()
 export class StageService {
@@ -10,5 +11,12 @@ export class StageService {
   /**
    * 表单数据
    */
-  public store:any[] = [];
+  public store: any[] = [];
+
+  /**
+   * 状态管理
+   */
+  public mapStatus: StageStatus = {
+    selectedId: ''
+  }
 }

@@ -3,11 +3,14 @@ import { Renderer2 } from '@angular/core';
 export class WidgetToolbar {
   // instance
   private static _parentInstance:any;
+  private static _renderer: Renderer2;
 
   /**
    * 添加工具栏
    */
   public static appendChild(renderer:Renderer2,parent:any) {
+    this._renderer = renderer;
+
     // remove old element
     const oldChild = document.getElementById('toolbarInstance');
     if(oldChild) {
@@ -38,5 +41,12 @@ export class WidgetToolbar {
 
     this._parentInstance = parent;
     renderer.appendChild(parent,element);
+  }
+
+  public static removeChild() {
+    const oldChild = document.getElementById('toolbarInstance');
+    if(oldChild) {
+      this._renderer.removeChild(this._parentInstance,oldChild);
+    }
   }
 }

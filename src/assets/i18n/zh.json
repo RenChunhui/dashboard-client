@@ -31,5 +31,17 @@
   },
   "property": {
     "title": "标题"
-  }
+  },
+
+  "field": "字段名",
+  "name": "名称",
+  "label": "标题",
+  "placeholder": "占位符",
+  "options": "选项",
+  "style": "风格",
+  "fontLevel": "字阶",
+  "align": "对齐",
+  "background":"背景",
+  "foreground":"前景",
+  "type":"类型"
 }

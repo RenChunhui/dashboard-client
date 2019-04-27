@@ -1,3 +1,5 @@
+@import './../../../styles/variables';
+
 .panel-sticky {
   position: relative;
   top: 0;
@@ -19,4 +21,8 @@
   font-size: 12px !important;
   flex-grow: 1;
   flex-basis: 100%;
+}
+
+.btn-group-sm > .btn {
+  line-height: 1rem !important;
 }

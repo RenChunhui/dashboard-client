@@ -32,7 +32,7 @@ export enum WidgetEnum {
   /**
    * 下拉框
    */
-  dropdown = 'dropdown',
+  select = 'select',
 
   /**
    * 日期时间

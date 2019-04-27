@@ -8,6 +8,7 @@ import { WidgetConfig } from '../../widget.interface';
 })
 export class LabelComponent extends Widget {
   @Input() config: WidgetConfig = {
+    id: this.uuid(),
     propertys: [
       {
         key: 'title',

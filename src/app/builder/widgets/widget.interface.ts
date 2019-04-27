@@ -1,4 +1,5 @@
 export interface WidgetConfig {
+  id: string;
   /**
    * 属性
    */

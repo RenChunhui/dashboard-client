@@ -1,11 +1,15 @@
-import { Directive, ElementRef, Renderer2, AfterViewInit, HostListener } from "@angular/core";
+import { Directive, ElementRef, Renderer2, AfterViewInit, HostListener, OnInit, Input } from "@angular/core";
 import { StageService } from '../stage/stage.service';
 import { WidgetToolbar } from './widget-toolbar';
+import { config } from 'rxjs';
+import { WidgetConfig } from './widget.interface';
 
 @Directive({
   selector: '[ngWidget]'
 })
-export class WidgetDirective implements AfterViewInit {
+export class WidgetDirective implements OnInit,AfterViewInit {
+  @Input() config: WidgetConfig;
+
   constructor(
     private _el: ElementRef,
     private _renderer: Renderer2,
@@ -15,9 +19,24 @@ export class WidgetDirective implements AfterViewInit {
   /**
    * @override
    */
+  ngOnInit() {
+    this._stageService.stageSubject.subscribe(observer => {
+      if(observer === 'preview') {
+        this._renderer.removeClass(this._el.nativeElement,'highlight');
+      } else if(observer === 'edit') {
+        this._renderer.addClass(this._el.nativeElement, 'highlight');
+      }
+    })
+  }
+
+  /**
+   * @override
+   */
   ngAfterViewInit() {
-    this._renderer.addClass(this._el.nativeElement, 'highlight');
-    this._renderer.setAttribute(this._el.nativeElement, 'id', this.uuid());
+    if(this._stageService.mapStatus.stage === 'edit') {
+      this._renderer.addClass(this._el.nativeElement, 'highlight');
+      this._renderer.setAttribute(this._el.nativeElement, 'id', this.uuid());
+    }
   }
 
   /**
@@ -25,24 +44,30 @@ export class WidgetDirective implements AfterViewInit {
    */
   @HostListener('click', ['$event'])
   private onClick(event) {
+    if(this._stageService.mapStatus.stage === 'preview') {
+      return;
+    }
+
     event.preventDefault();
     event.stopPropagation();
+
+    // send message
+    this._stageService.configSubject.next(this.config);
 
     // remove over class
     this._renderer.removeClass(this._el.nativeElement, 'highlight-over');
 
-    // add toolbar
-    WidgetToolbar.appendChild(this._renderer,this._el.nativeElement);
-
-    if(this._stageService.mapStatus.selectedId === this._el.nativeElement.id) {
+    if (this._stageService.mapStatus.selectedId === this._el.nativeElement.id) {
       this._stageService.mapStatus.selectedId = '';
+      this._renderer.removeClass(this._el.nativeElement, 'highlight-active');
+      WidgetToolbar.removeChild();
     } else {
-      if(this._stageService.mapStatus.selectedId !== '') {
-        this._renderer.removeClass(document.getElementById(this._stageService.mapStatus.selectedId),'highlight-active');
+      if (this._stageService.mapStatus.selectedId !== '') {
+        this._renderer.removeClass(document.getElementById(this._stageService.mapStatus.selectedId), 'highlight-active');
       }
       this._stageService.mapStatus.selectedId = this._el.nativeElement.id;
-      const element = document.getElementById(this._stageService.mapStatus.selectedId);
-      this._renderer.addClass(element,'highlight-active');
+      this._renderer.addClass(this._el.nativeElement, 'highlight-active');
+      WidgetToolbar.appendChild(this._renderer, this._el.nativeElement);
     }
   }
 
@@ -51,6 +76,10 @@ export class WidgetDirective implements AfterViewInit {
    */
   @HostListener('mouseover', ['$event'])
   private onOver(event) {
+    if(this._stageService.mapStatus.stage === 'preview') {
+      return;
+    }
+
     event.preventDefault();
     event.stopPropagation();
 
@@ -65,6 +94,10 @@ export class WidgetDirective implements AfterViewInit {
   @HostListener('mouseleave', ['$event'])
   @HostListener('mouseout', ['$event'])
   private onOut(event) {
+    if(this._stageService.mapStatus.stage === 'preview') {
+      return;
+    }
+
     event.preventDefault();
     event.stopPropagation();
 

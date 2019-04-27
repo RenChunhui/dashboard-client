@@ -1,10 +1,189 @@
 <div class="panel-sticky">
   <nav>
-    <div class="nav nav-tabs">
-      <a class="nav-item nav-link active">{{ 'panel.property' | translate}}</a>
-      <a class="nav-item nav-link">{{ 'panel.style' | translate}}</a>
-      <a class="nav-item nav-link">{{ 'panel.event' | translate}}</a>
-      <a class="nav-item nav-link">{{ 'panel.rule' | translate}}</a>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-property-tab"
+         data-toggle="tab" [class.disabled]="!config?.propertys"
+         href="#nav-property" role="tab" aria-controls="nav-property"
+         aria-selected="true">属性</a>
+      <a class="nav-item nav-link"
+         [class.disabled]="!config?.styles"
+         id="nav-style-tab"
+         data-toggle="tab"
+         href="#nav-style"
+         role="tab"
+         aria-controls="nav-style"
+         aria-selected="false">样式</a>
+      <a class="nav-item nav-link"
+         [class.disabled]="!config?.events"
+         id="nav-event-tab"
+         data-toggle="tab"
+         href="#nav-event"
+         role="tab"
+         aria-controls="nav-event"
+         aria-selected="false">事件</a>
+      <a class="nav-item nav-link"
+         [class.disabled]="!config?.rules"
+         id="nav-rule-tab"
+         data-toggle="tab"
+         href="#nav-rule"
+         role="tab"
+         aria-controls="nav-rule"
+         aria-selected="false">规则</a>
     </div>
   </nav>
+  <div class="tab-content p-3" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-property" role="tabpanel"
+         aria-labelledby="nav-property-tab">
+      <ng-container [ngTemplateOutlet]="propertyTemplate"></ng-container>
+    </div>
+    <div class="tab-pane fade" id="nav-style" role="tabpanel"
+         aria-labelledby="nav-style-tab">
+      <ng-container [ngTemplateOutlet]="styleTemplate"></ng-container>
+    </div>
+    <div class="tab-pane fade" id="nav-event" role="tabpanel"
+         aria-labelledby="nav-event-tab">
+      <ng-container [ngTemplateOutlet]="eventTemplate"></ng-container>
+    </div>
+    <div class="tab-pane fade" id="nav-rule" role="tabpanel"
+         aria-labelledby="nav-rule-tab">
+      <ng-container [ngTemplateOutlet]="ruleTemplate"></ng-container>
+    </div>
+  </div>
 </div>
+
+
+<!-- 属性 -->
+<ng-template #propertyTemplate>
+  <ng-container *ngFor="let property of config?.propertys">
+    <div class="form-group">
+      <label [for]="property.key">{{property.key | translate}}</label>
+      <ng-container [ngSwitch]="property.rendererType">
+        <!-- 页面设置 -->
+        <ng-container *ngSwitchCase="'root-radio'">
+          <div class="form-check mb-1"
+               *ngFor="let item of property.provider;let index=index">
+            <input class="form-check-input" type="radio" name="root-style"
+                   id="exampleRadios1" [value]="item.key"
+                   [(ngModel)]="property.default"
+                   (ngModelChange)="onRootStyleChangeHandler(property.default)"
+                   [checked]="property.default === item.key">
+            <label class="form-check-label" for="exampleRadios1">
+              {{item.value}}
+            </label>
+          </div>
+        </ng-container>
+
+        <!-- text -->
+        <input *ngSwitchCase="'text'" class="form-control form-control-sm"
+               [(ngModel)]="property.default">
+
+        <!-- textarea -->
+        <textarea *ngSwitchCase="'textarea'" class="form-control" [(ngModel)]="property.default">
+
+        </textarea>
+
+        <!-- radio -->
+        <ng-container *ngSwitchCase="'radio'">
+          <div class="input-group input-group-sm mb-1"
+               *ngFor="let item of property.provider;let index=index">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="radio" [value]="item.key"
+                       [(ngModel)]="property.default"
+                       [checked]="property.default === item.key">
+              </div>
+            </div>
+            <input type="text" class="form-control" [(ngModel)]="item.key">
+            <input type="text" class="form-control" [(ngModel)]="item.value">
+            <div class="input-group-append">
+              <span class="input-group-text iconfont icon-delete"></span>
+            </div>
+          </div>
+          <a
+             class="btn btn-outline-secondary btn-block btn-sm mt-1 text-secondary">新增选项</a>
+          <a
+             class="btn btn-outline-secondary btn-block btn-sm mt-1 text-secondary">服务器数据</a>
+        </ng-container>
+
+        <!-- checkbox -->
+        <ng-container *ngSwitchCase="'checkbox'">
+          <div class="input-group input-group-sm mb-1"
+               *ngFor="let item of property.provider;let index=index">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox" [value]="item.key"
+                       [(ngModel)]="item.data">
+              </div>
+            </div>
+            <input type="text" class="form-control" [(ngModel)]="item.key">
+            <input type="text" class="form-control" [(ngModel)]="item.value">
+            <div class="input-group-append">
+              <span class="input-group-text iconfont icon-delete"></span>
+            </div>
+          </div>
+          <a class="btn btn-outline-primary btn-block btn-sm mt-3 text-primary">
+            新增选项
+          </a>
+          <a class="btn btn-outline-secondary btn-block btn-sm mt-1">
+            服务器数据
+          </a>
+        </ng-container>
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-template>
+
+<!-- 样式 -->
+<ng-template #styleTemplate>
+  <ng-container *ngFor="let style of config?.styles">
+    <div class="form-group">
+      <label [for]="style.key" class="d-block">{{style.key | translate}}</label>
+
+      <ng-container [ngSwitch]="style.rendererType">
+        <!-- select -->
+        <select *ngSwitchCase="'select'" [(ngModel)]="style.default"
+                class="custom-select custom-select-sm">
+          <option *ngFor="let item of style.provider" [value]="item.key">
+            {{item.value}}</option>
+        </select>
+
+        <!-- radio -->
+        <ng-container *ngSwitchCase="'radio'">
+          <div class="form-check" *ngFor="let item of style.provider">
+            <input class="form-check-input" type="radio" [id]="item.key"
+                   [name]="style.key" [(ngModel)]="style.default"
+                   [value]="item.key" checked>
+            <label class="form-check-label"
+                   [for]="item.key">{{item.value}}</label>
+          </div>
+        </ng-container>
+
+
+        <!-- buttons -->
+        <ng-container *ngSwitchCase="'buttons'">
+          <div class="btn-group btn-group-toggle btn-group-sm w-100"
+               data-toggle="buttons">
+            <label class="btn btn-outline-primary"
+                   [class.active]="button.key === style.default"
+                   *ngFor="let button of style.provider">
+              <input type="radio" name="options" id="option2"
+                     autocomplete="off">
+              <span class="iconfont" [ngClass]="button.value"></span>
+            </label>
+          </div>
+        </ng-container>
+
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-template>
+
+<!-- 事件 -->
+<ng-template #eventTemplate>
+  <div>eventTemplate</div>
+</ng-template>
+
+<!-- 规则 -->
+<ng-template #ruleTemplate>
+  <div>ruleTemplate</div>
+</ng-template>

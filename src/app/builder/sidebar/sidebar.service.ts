@@ -19,7 +19,7 @@ export class SidebarService {
         { label: 'base.textarea', type: WidgetEnum.textarea, icon: 'icontextarea1', scope: 'widget' },
         { label: 'base.radio', type: WidgetEnum.radio, icon: 'iconcheck-circle', scope: 'widget' },
         { label: 'base.checkbox', type: WidgetEnum.checkbox, icon: 'iconcheck-square', scope: 'widget' },
-        { label: 'base.select', type: WidgetEnum.dropdown, icon: 'icondown-square', scope: 'widget' },
+        { label: 'base.select', type: WidgetEnum.select, icon: 'icondown-square', scope: 'widget' },
         { label: 'base.datetime', type: WidgetEnum.datetime, icon: 'iconcalendar', scope: 'widget' },
         { label: 'base.button', type: WidgetEnum.button, icon: 'iconanniu', scope: 'widget' }
       ]

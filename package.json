@@ -12,8 +12,7 @@
   "license": "MIT",
   "author": "Ren Chunhui <renchunhui2008@gmail.com>",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open",
     "build": "ng build --aot=true --buildOptimizer=true --extractCss=true --extractLicenses=true --optimization=true --prod=true"
   },
   "private": true,
@@ -30,6 +29,8 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
+    "jquery": "^3.4.0",
+    "popper.js": "^1.15.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

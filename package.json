@@ -1,21 +1,12 @@
 {
   "name": "angular-form-builder",
-  "version": "1.0.0",
-  "description": "Angular + Bootstrap 拖拽表单设计器",
-  "keywords": [
-    "Angular",
-    "Sass",
-    "form",
-    "builder"
-  ],
-  "homepage": "",
-  "license": "MIT",
-  "author": "Ren Chunhui <renchunhui2008@gmail.com>",
+  "version": "0.0.0",
   "scripts": {
-    "start": "ng serve --open",
-    "build": "ng build --aot=true --buildOptimizer=true --extractCss=true --extractLicenses=true --optimization=true --prod=true"
+    "start": "ng serve",
+    "build": "ng build --prod"
   },
   "private": true,
+  "license": "MIT",
   "dependencies": {
     "@angular/animations": "~7.2.0",
     "@angular/common": "~7.2.0",
@@ -29,7 +20,7 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
-    "jquery": "^3.4.0",
+    "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
@@ -40,6 +31,7 @@
     "@angular/cli": "~7.3.8",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
+    "@types/jquery": "^3.3.29",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
     "protractor": "~5.4.0",

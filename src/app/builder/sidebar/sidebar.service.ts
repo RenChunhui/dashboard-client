@@ -1,34 +1,26 @@
 import { Injectable } from "@angular/core";
-import { SidebarConfig } from './sidebar.interface';
-import { WidgetEnum } from './sidebar.enum';
 
 @Injectable()
 export class SidebarService {
-  public widgetConfig: SidebarConfig[] = [
+  /**
+   * 组件配置
+   */
+  public widgetConfig = [
     {
-      label: 'group.layout',
+      name: '布局',
       group: [
-        { label: 'layout.container', type: WidgetEnum.container, icon: 'iconlayout', scope: 'container' }
+        { name: '容器', type: 'container'}
       ]
     },
     {
-      label: 'group.base',
+      name: '基础组件',
       group: [
-        { label: 'base.label', type: WidgetEnum.label, icon: 'iconbiaoti', scope: 'widget' },
-        { label: 'base.input', type: WidgetEnum.input, icon: 'iconinput', scope: 'widget' },
-        { label: 'base.textarea', type: WidgetEnum.textarea, icon: 'icontextarea1', scope: 'widget' },
-        { label: 'base.radio', type: WidgetEnum.radio, icon: 'iconcheck-circle', scope: 'widget' },
-        { label: 'base.checkbox', type: WidgetEnum.checkbox, icon: 'iconcheck-square', scope: 'widget' },
-        { label: 'base.select', type: WidgetEnum.select, icon: 'icondown-square', scope: 'widget' },
-        { label: 'base.datetime', type: WidgetEnum.datetime, icon: 'iconcalendar', scope: 'widget' },
-        { label: 'base.button', type: WidgetEnum.button, icon: 'iconanniu', scope: 'widget' }
-      ]
-    },
-    {
-      label: 'group.complex',
-      group: [
-        { label: 'complex.file', type: WidgetEnum.file, icon: 'iconplus-square', scope: 'widget' },
-        { label: 'complex.table', type: WidgetEnum.table, icon: 'icontable', scope: 'widget' },
+        { name: '标题' ,type: 'label'},
+        { name: '输入框', type: 'input'},
+        { name: '文本框', type: 'textarea'},
+        { name: '单选框', type: 'radio'},
+        { name: '多选框', type: 'checkbox'},
+        { name: '下拉框', type: 'select'}
       ]
     }
   ]

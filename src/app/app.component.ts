@@ -1,24 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+  selector: 'app-root',
+  templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit {
-    constructor(
-        public translate: TranslateService
-    ) {
-        translate.addLangs(['en', 'zh']);
-        translate.setDefaultLang('en');
-
-        const browserLang = translate.getBrowserLang();
-        translate.use(browserLang.match(/en|zh/) ? browserLang : 'zh');
-    }
-
-
-    ngOnInit() {
-        console.log('ngOnInit');
-    }
+export class AppComponent {
+  title = 'angular-form-builder';
 }

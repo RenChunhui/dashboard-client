@@ -1,20 +1,8 @@
-<div class="sidebar-sticky">
-  <ng-container *ngFor="let group of sidebarService.widgetConfig">
-    <!-- title -->
-    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-      <span>{{ group.label | translate }}</span>
-    </h6>
-
-    <!-- widgets -->
-    <ul class="nav d-flex flex-wrap">
-      <li class="nav-item px-0" *ngFor="let item of group.group">
-        <a ngDrag [dragData]="item.type" class="nav-link p-0" [dragScope]="item.scope">
-          <i class="iconfont" [ngClass]="item.icon"></i>
-          <span>{{item.label | translate}}</span>
-        </a>
-      </li>
-    </ul>
-  </ng-container>
-</div>
-
-<!-- <h2>{{ 'HOME.TITLE' | translate }}</h2> -->
+<ng-container *ngFor="let item of service.widgetConfig">
+  <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">{{item.name}}</h6>
+  <ul class="nav flex-column mb-2" *ngFor="let group of item.group">
+    <li class="nav-item">
+      <a class="nav-link">{{group.name}}</a>
+    </li>
+  </ul>
+</ng-container>

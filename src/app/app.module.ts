@@ -1,20 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { HttpClientModule,HttpClient } from '@angular/common/http';
+import { Routes, RouterModule } from '@angular/router';
 
-const route: Routes = [
-  { path: '', redirectTo: 'builder', pathMatch: 'full' },
-  { path: 'builder', loadChildren: './builder/builder.module#BuilderModule'}
+const routes: Routes = [
+  { path: '', redirectTo: 'builder', pathMatch: 'full'},
+  { path: 'builder', loadChildren: () => import('./builder/builder.module').then(m => m.BuilderModule)}
 ]
-
-export function HttpLoaderFactory(http:HttpClient) {
-  return new TranslateHttpLoader(http);
-}
 
 @NgModule({
   declarations: [
@@ -22,16 +14,9 @@ export function HttpLoaderFactory(http:HttpClient) {
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(route),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+    RouterModule.forRoot(routes)
   ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

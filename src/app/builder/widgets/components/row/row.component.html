@@ -1,6 +1,0 @@
-<ng-container *ngFor="let cell of list;let index=index">
-  <div data-title="列" ngWidget ngDrop (onDrop)="onDropHandler($event,index)" [dropScope]="'widget'"
-       class="fb-cell">
-    <ng-template #widgetView></ng-template>
-  </div>
-</ng-container>

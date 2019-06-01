@@ -1,25 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-::-webkit-scrollbar {
-  display: none;
-}
+// @import './styles//builder';
 
-@import './styles/variables';
-@import './styles/cursor';
-@import './styles/dragdrop';
-@import './styles//nav';
-
-// 必需
-@import "~bootstrap/scss/bootstrap";
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
-
-// 可选
-@import "~bootstrap/scss/root";
-@import "~bootstrap/scss/reboot";
-@import "~bootstrap/scss/type";
-@import "~bootstrap/scss/buttons";
-@import "~bootstrap/scss/list-group";
-
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';

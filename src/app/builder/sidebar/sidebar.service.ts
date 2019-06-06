@@ -1,26 +1,30 @@
 import { Injectable } from "@angular/core";
+import { ScopeEnum } from './enums/scope.enum';
+import { WidgetEnum } from '../widgets/enums/widget.enum';
+import { IWidgetConfig } from './sidebar.interface';
 
 @Injectable()
 export class SidebarService {
   /**
    * 组件配置
    */
-  public widgetConfig = [
+  public widgetConfig:IWidgetConfig[] = [
     {
-      name: '布局',
+      name: 'layout',
       group: [
-        { name: '容器', type: 'container'}
+        { name: WidgetEnum.container,  icon: '', scope: ScopeEnum.container },
+        { name: WidgetEnum.tabs, icon: '', scope: ScopeEnum.container }
       ]
     },
     {
-      name: '基础组件',
+      name: 'base component',
       group: [
-        { name: '标题' ,type: 'label'},
-        { name: '输入框', type: 'input'},
-        { name: '文本框', type: 'textarea'},
-        { name: '单选框', type: 'radio'},
-        { name: '多选框', type: 'checkbox'},
-        { name: '下拉框', type: 'select'}
+        { name: 'label',    icon: '', scope: ScopeEnum.widget },
+        { name: 'input',    icon: '', scope: ScopeEnum.widget },
+        { name: 'textarea', icon: '', scope: ScopeEnum.widget },
+        { name: 'radio',    icon: '', scope: ScopeEnum.widget },
+        { name: 'checkbox', icon: '', scope: ScopeEnum.widget },
+        { name: 'select',   icon: '', scope: ScopeEnum.widget }
       ]
     }
   ]

@@ -1,7 +1,7 @@
 <ng-container *ngFor="let item of service.widgetConfig">
   <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">{{item.name}}</h6>
   <ul class="nav flex-column mb-2" *ngFor="let group of item.group">
-    <li class="nav-item">
+    <li class="nav-item" ngDrag [dragScope]="group.scope" [dragData]="group">
       <a class="nav-link">{{group.name}}</a>
     </li>
   </ul>

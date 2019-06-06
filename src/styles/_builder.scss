@@ -1,105 +1,56 @@
-$sidebar-width: 192px;
-$panel-width: 240px;
 
-body {
-  font-size: .875rem;
+// 行
+.fb-row {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: .5rem;
 }
 
-.feather {
-  width: 16px;
-  height: 16px;
-  vertical-align: text-bottom;
+// 列
+.fb-col {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+  min-height: 1.5rem;
 }
 
-/*
- * Sidebar
- */
-
- .sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  width: $sidebar-width;
-  padding: 48px 0 0;
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+// 高亮
+.highlight {
+  outline: 1px dashed rgba(170,170,170,0.5);
+  outline-offset: -2px;
 }
 
-.sidebar-sticky {
-  position: relative;
-  top: 0;
-  height: calc(100vh - 48px);
-  padding-top: .5rem;
-  overflow-x: hidden;
-  overflow-y: auto;
+.highlight-hint {
+  outline: 1px dashed green !important;
+  outline-offset: -2px;
 }
 
-@supports ((position: -webkit-sticky) or (position: sticky)) {
-  .sidebar-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-  }
+.highlight-over {
+  outline: 1px dashed $primary !important;
+  outline-offset: -2px;
 }
 
-.sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
-}
+//
+// Drag and drop
+//
 
-.sidebar .nav-link .feather {
-  margin-right: 4px;
-  color: #999;
-}
+// .drag-handle {
+//   cursor: move;
+//   cursor: grab;
+//   cursor: -moz-grab;
+//   cursor: -webkit-grab;
+// }
 
-.sidebar .nav-link.active {
-  color: #007bff;
-}
+// .drag-handle:active {
+//   cursor: grabbing;
+//   cursor: -moz-grabbing;
+//   cursor: -webkit-grabbing;
+// }
 
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  color: inherit;
-}
+// .drag-hint {
+//   outline: 1px dashed green;
+// }
 
-.sidebar-heading {
-  font-size: .75rem;
-  text-transform: uppercase;
-}
-
-/*
- * Content
- */
-
-[role="main"] {
-  padding-top: 133px; /* Space for fixed navbar */
-}
-
-/*
- * Navbar
- */
-
-.navbar-brand {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  font-size: 1rem;
-  width: $sidebar-width;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
-}
-
-.navbar .form-control {
-  padding: .75rem 1rem;
-  border-width: 0;
-  border-radius: 0;
-}
-
-.form-control-dark {
-  color: #fff;
-  background-color: rgba(255, 255, 255, .1);
-  border-color: rgba(255, 255, 255, .1);
-}
-
-.form-control-dark:focus {
-  border-color: transparent;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
-}
+// .drag-over {
+//   outline: 1px dashed $primary;
+// }

@@ -9,6 +9,5 @@ import { SidebarService } from './sidebar.service';
 export class SidebarComponent {
   constructor(
     public service: SidebarService
-  ) {console.log('sidebar');
-  }
+  ) {}
 }

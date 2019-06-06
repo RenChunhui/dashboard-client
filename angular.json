@@ -76,6 +76,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "angular-form-builder"
 }

@@ -1,4 +1,4 @@
-<form ngDrop ngAction [dropScope]="scopeEnum.container"
+<form #formNode ngDrop ngAction [dropScope]="scopeEnum.container"
       (onDrop)="onDropHandler($event)"
       (onDragOver)="onDragOver($event)"
       class="w-100 h-100 position-relative">

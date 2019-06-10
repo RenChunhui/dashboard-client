@@ -1,15 +1,17 @@
-<form #formNode ngDrop ngAction [dropScope]="scopeEnum.container"
+<form #formNode ngDrop ngAction
+      [dropScope]="scopeEnum.container"
       (onDrop)="onDropHandler($event)"
       (onDragOver)="onDragOver($event)"
+      (onDragLeave)="onDragLeaveHandler($event)"
       class="w-100 h-100 position-relative">
   <ng-container *ngFor="let item of stageService.store">
     <ng-template #container></ng-template>
   </ng-container>
 
   <!-- 提示节点 -->
-  <div #placeholderNode class="fb-row highlight-over" *ngIf="showHint">
+  <!-- <div #placeholderNode class="fb-row highlight-over">
     <div class="fb-col text-center text-muted">在此插入内容</div>
-  </div>
+  </!-->
 
   <span ngHighlight [dropScope]="scopeEnum.container"></span>
 </form>

@@ -5,9 +5,11 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { ActionDirective } from './directives/action.directive';
 import { NgDragDropModule } from 'src/app/common/drag-drop/drag-drop.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
+    CommonModule,
     NgDragDropModule
   ],
   declarations: [

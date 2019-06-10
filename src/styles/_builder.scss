@@ -28,6 +28,19 @@
 .highlight-over {
   outline: 1px dashed $primary !important;
   outline-offset: -2px;
+
+  &:before {
+    content:attr(data-title);
+    position: absolute;
+    padding: 0 .5rem;
+    height: 16px;
+    line-height: 16px;
+    font-size: 10px;
+    top: -14px;
+    left: 1px;
+    color: white;
+    background-color: $primary;
+  }
 }
 
 //

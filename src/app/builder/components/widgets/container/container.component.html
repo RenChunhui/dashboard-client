@@ -1,0 +1,10 @@
+<div *ngIf="!placeholderNode" ngAction [config]="rowConfig" class="fb-row position-relative">
+  <div ngAction [config]="colConfig" class="fb-col position-relative">
+    <span ngHighlight></span>
+  </div>
+  <span ngHighlight></span>
+</div>
+
+<div *ngIf="placeholderNode" class="fb-fow p-1 bg-primary">
+
+</div>

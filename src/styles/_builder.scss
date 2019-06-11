@@ -18,29 +18,35 @@
 .highlight {
   outline: 1px dashed rgba(170,170,170,0.5);
   outline-offset: -2px;
+
+  &.hover {
+    outline: 1px dashed $primary !important;
+    outline-offset: -2px;
+
+    &:before {
+      content:attr(data-title);
+      position: absolute;
+      padding: 0 .5rem;
+      height: 16px;
+      line-height: 16px;
+      font-size: 10px;
+      top: -14px;
+      left: 1px;
+      color: white;
+      background-color: $primary;
+      z-index: 9999;
+    }
+  }
+
+  &.active {
+    outline: 1px solid $primary !important;
+    outline-offset: -2px;
+  }
 }
 
 .highlight-hint {
   outline: 1px dashed green !important;
   outline-offset: -2px;
-}
-
-.highlight-over {
-  outline: 1px dashed $primary !important;
-  outline-offset: -2px;
-
-  &:before {
-    content:attr(data-title);
-    position: absolute;
-    padding: 0 .5rem;
-    height: 16px;
-    line-height: 16px;
-    font-size: 10px;
-    top: -14px;
-    left: 1px;
-    color: white;
-    background-color: $primary;
-  }
 }
 
 //

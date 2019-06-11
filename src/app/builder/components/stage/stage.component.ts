@@ -1,11 +1,13 @@
 import { Component, ComponentFactoryResolver, ViewChild, ViewContainerRef, ViewChildren, QueryList, OnInit, ElementRef, Injector, Renderer2 } from "@angular/core";
-import { ScopeEnum } from '../sidebar/enums/scope.enum';
+import { ScopeEnum } from '../../enums/scope.enum';
 import { DropEvent } from 'src/app/common/drag-drop/drop-event';
-import { ContainerComponent } from '../widgets/components/container/container.component';
-import { StageService } from './stage.service';
-import { IWidgetGroupConfig } from '../sidebar/sidebar.interface';
+import { StageService } from '../../services/stage.service';
 import { NgDragDropService } from 'src/app/common/drag-drop/drag-drop.service';
-import { WidgetEnum } from '../widgets/enums/widget.enum';
+import { WidgetEnum } from '../../enums/widget.enum';
+import { IWidgetGroupConfig } from '../../interfaces/widget.interface';
+import { ContainerComponent } from '../widgets/container/container.component';
+import { IConfig } from '../../interfaces/config.interface';
+import { RendererEnum } from '../../enums/renderer.enum';
 
 @Component({
   selector: '[app-stage]',
@@ -18,8 +20,11 @@ export class StageComponent implements OnInit {
 
   /** 范围控制枚举 */
   public scopeEnum = ScopeEnum;
-  /** 是否显示提示 */
-  // public showHint: boolean = false;
+
+  public globalConfig:IConfig = {
+    name: 'Page'
+  }
+
   // 提示节点
   private _placeholderNode: any;
 

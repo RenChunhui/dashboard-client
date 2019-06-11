@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { ScopeEnum } from './enums/scope.enum';
-import { WidgetEnum } from '../widgets/enums/widget.enum';
-import { IWidgetConfig } from './sidebar.interface';
+import { ScopeEnum } from '../enums/scope.enum';
+import { WidgetEnum } from '../enums/widget.enum';
+import { IWidgetConfig } from '../interfaces/widget.interface';
 
 @Injectable()
 export class SidebarService {

@@ -11,6 +11,9 @@ import { StageService } from './services/stage.service';
 import { ContainerComponent } from './components/widgets/container/container.component';
 import { ActionDirective } from './directives/action.directive';
 import { HighlightDirective } from './directives/highlight.directive';
+import { PlaceholderComponent } from './components/widgets/placeholder/placeholder.component';
+import { EventService } from './services/event.service';
+import { ContainerDirective } from './components/widgets/container/container.directive';
 
 const routes: Routes = [
   { path: '', component: BuilderComponent }
@@ -29,18 +32,22 @@ const routes: Routes = [
     PanelComponent,
 
     // widgets
+    PlaceholderComponent,
     ContainerComponent,
 
     // directive
+    ContainerDirective,
     ActionDirective,
     HighlightDirective
   ],
   entryComponents: [
+    PlaceholderComponent,
     ContainerComponent
   ],
   providers: [
     SidebarService,
-    StageService
+    StageService,
+    EventService
   ]
 })
 export class BuilderModule { }

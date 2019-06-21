@@ -1,8 +1,8 @@
-<form #formNode ngDrop ngAction [config]="globalConfig"
-      [dropScope]="scopeEnum.container"
-      (onDrop)="onDropHandler($event)"
-      (onDragOver)="onDragOver($event)"
-      (onDragLeave)="onDragLeaveHandler($event)"
-      class="w-100 h-100 position-relative">
+<form #formNode ngDrop ngAction [config]="globalConfig" [dropScope]="scopeEnum.container"
+  (onDrop)="onDropHandler($event)" (onDragOver)="onDragOver($event)" (onDragLeave)="onDragLeaveHandler($event)"
+  class="w-100 h-100 position-relative">
+
+  <ng-container #vc></ng-container>
+
   <span ngHighlight [dropScope]="scopeEnum.container"></span>
 </form>

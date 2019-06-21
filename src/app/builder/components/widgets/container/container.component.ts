@@ -1,15 +1,17 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, ElementRef, AfterViewInit, OnInit, OnChanges, SimpleChanges, ViewChild, Inject, ViewContainerRef } from "@angular/core";
 import { IConfig } from 'src/app/builder/interfaces/config.interface';
 import { RendererEnum } from 'src/app/builder/enums/renderer.enum';
+import { EventService } from 'src/app/builder/services/event.service';
+import { ContainerDirective } from './container.directive';
 
 @Component({
   selector: '[ng-container]',
   templateUrl: 'container.component.html'
 })
 export class ContainerComponent {
-  @Input() placeholderNode:boolean = false;
+  @Input() index:number = -1;
 
-  rowConfig:IConfig = {
+  config: IConfig = {
     name: 'row',
     config: {
       propertys: {
@@ -20,7 +22,13 @@ export class ContainerComponent {
     }
   };
 
-  colConfig:IConfig = {
-    name: 'col'
+  constructor(
+    private _el: ElementRef,
+    private _eventService:EventService,
+    // vc:ViewContainerRef,
+    // @Inject('ng-container') container
+  ) {
+    // container.registerContainer(vc)
   }
+
 }

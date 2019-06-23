@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, ViewChild, OnInit, ElementRef, Injector, Renderer2, ViewChildren, QueryList, ContentChildren, ViewContainerRef } from "@angular/core";
+import { Component, ComponentFactoryResolver, ViewChild, OnInit, ElementRef, Injector, Renderer2, ViewChildren, QueryList, ContentChildren, ViewContainerRef, ComponentRef } from "@angular/core";
 import { ScopeEnum } from '../../enums/scope.enum';
 import { DropEvent } from 'src/app/common/drag-drop/drop-event';
 import { StageService } from '../../services/stage.service';
@@ -15,7 +15,7 @@ import { ContainerComponent } from '../widgets/container/container.component';
   templateUrl: 'stage.component.html'
 })
 export class StageComponent implements OnInit {
-  @ViewChildren(ContainerComponent) vcList:QueryList<ContainerComponent>;
+  @ViewChildren(ContainerComponent) vcList: QueryList<ContainerComponent>;
   @ViewChild('vc', { read: ViewContainerRef, static: false }) vc: ViewContainerRef;
   @ViewChild('formNode', { static: false }) formNode: ElementRef;
 
@@ -28,6 +28,7 @@ export class StageComponent implements OnInit {
 
   // 提示节点
   private _placeholderNode: any;
+  private _containerManager: any[] = [];
 
   constructor(
     public stageService: StageService,
@@ -97,25 +98,12 @@ export class StageComponent implements OnInit {
     const componentRef = componentFactory.create(this._injector);
 
     (<ContainerComponent>componentRef.instance).index = placeholderIndex;
-    this.vc.insert(componentRef.hostView,placeholderIndex);
+    this.vc.insert(componentRef.hostView, placeholderIndex);
+
+    this._containerManager.splice(placeholderIndex, 0, componentRef);
 
     this._removePlaceholderNode();
-
-    return;
-    // const componentRef = componentFactory.create(this._injector);
-    // const index = Array.prototype.indexOf.call(this.formNode.nativeElement.children, this._placeholderNode);
-    // const formNode = (<HTMLElement>this.formNode.nativeElement);
-
-    // if (dragData.name === WidgetEnum.container) {
-    //   componentRef.hostView.detectChanges();
-    // }
-
-    // const oldChild = this._placeholderNode;
-    // const newChild = componentRef.location.nativeElement.firstChild;
-    // formNode.replaceChild(newChild, oldChild);
-
-    // this._resetNodes();
-    // this._eventService.renderSubject.next(-1);
+    this._resetNodes();
   }
 
   /**
@@ -150,9 +138,8 @@ export class StageComponent implements OnInit {
    * 刷新节点
    */
   private _resetNodes() {
-    const nodes = (<HTMLElement>this.formNode.nativeElement).childNodes;
-    nodes.forEach((item, index) => {
-      this._renderer.setAttribute(item, 'data-index', index.toString());
+    this._containerManager.forEach((item, index) => {
+      (<ContainerComponent>item.instance).index = index;
     })
   }
 }

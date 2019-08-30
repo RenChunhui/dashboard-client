@@ -1,4 +1,4 @@
-import { Directive } from "@angular/core";
+import { Directive } from '@angular/core';
 
-@Directive({ selector: '[fbDrop]'})
+@Directive({ selector: '[appDrop]'})
 export class DropDirective {}

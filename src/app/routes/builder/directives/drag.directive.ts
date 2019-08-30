@@ -1,4 +1,4 @@
-import { Directive } from "@angular/core";
+import { Directive } from '@angular/core';
 
-@Directive({ selector: '[fbDrag]'})
+@Directive({ selector: '[appDrag]'})
 export class DragDirective {}

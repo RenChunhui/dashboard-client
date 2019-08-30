@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import { BuilderComponent } from './builder.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ToolbarComponent } from './modules/toolbar/toolbar.component';
@@ -19,7 +19,7 @@ import { TextComponent } from './components/text.component';
 
 const routes: Routes = [
   { path: 'builder', component: BuilderComponent }
-]
+];
 
 @NgModule({
   imports: [

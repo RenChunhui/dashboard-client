@@ -12,6 +12,11 @@ export interface StoreOptions {
   name: ComponentType;
 
   /**
+   * 显示名称
+   */
+  displayName: string;
+
+  /**
    * 宽度值
    */
   width: string;
@@ -29,10 +34,10 @@ export interface StoreOptions {
   /**
    * 事件
    */
-  events:any;
+  events: any;
 
   /**
    * 验证规则
    */
-  rules:any;
+  rules: any;
 }

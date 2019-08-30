@@ -1,0 +1,19 @@
+@mixin theme-core-styles {
+  :root {
+    @each $style,$value in $theme-colors {
+      --theme-#{$style}: #{$value};
+    }
+  }
+
+  @each $style,$value in $theme-colors {
+    .bg-#{$style} {
+      background-color: var(--theme-#{$style});
+    }
+
+    .fg-#{$style} {
+      color: var(--theme-#{$style});
+    }
+  }
+}
+
+@include theme-core-styles

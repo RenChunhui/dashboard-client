@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@charset 'utf-8';
+
+@import './styles/base/variables';
+@import './styles/base/reset';
+@import './styles/base/mixins';
+@import './styles/base/typography';
+
+@import './styles/layout/builder';

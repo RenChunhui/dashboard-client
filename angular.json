@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "angular-form-builder": {
+    "angular-dashboard": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -44,14 +44,20 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-form-builder",
+            "outputPath": "dist/angular-dashboard",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/styles.scss"
@@ -91,22 +97,22 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-form-builder:build"
+            "browserTarget": "angular-dashboard:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-form-builder:build:production"
+              "browserTarget": "angular-dashboard:build:production"
             }
           }
         },
         "extract-i18n": {
-          "builder": "@angular-builders/custom-webpack:extract-i18n",
+          "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-form-builder:build"
+            "browserTarget": "angular-dashboard:build"
           }
         }
       }
     }
   },
-  "defaultProject": "angular-form-builder"
+  "defaultProject": "angular-dashboard"
 }

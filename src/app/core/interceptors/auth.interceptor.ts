@@ -1,12 +1,15 @@
+import { HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import * as Cookies from "js-cookie";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  intercept(request: HttpRequest<any>, next: HttpHandler) {
-    const token = '';
-    const headers = request.clone({ headers: request.headers.set('Authorization', token)});
+  constructor() { }
 
-    return next.handle(headers);
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    const token = Cookies.get('access_token');
+    const authReq = req.clone({ headers: req.headers.set('Authorization', `Bearer ${token}`) })
+
+    return next.handle(authReq);
   }
 }

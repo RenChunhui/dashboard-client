@@ -1,10 +1,10 @@
 {
-  "name": "angular-form-builder",
-  "version": "0.0.1",
+  "name": "angular-dashboard",
+  "version": "0.0.0",
   "scripts": {
     "start": "ng serve --open",
     "build": "ng build",
-    "mock": "json-server --watch mocks/db.json"
+    "mocks": "node scripts/mock-service.js"
   },
   "private": true,
   "dependencies": {
@@ -16,7 +16,8 @@
     "@angular/platform-browser": "~11.2.1",
     "@angular/platform-browser-dynamic": "~11.2.1",
     "@angular/router": "~11.2.1",
-    "bootstrap": "^4.6.0",
+    "js-cookie": "^2.2.1",
+    "ng-zorro-antd": "^11.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
@@ -25,15 +26,13 @@
     "@angular-devkit/build-angular": "~0.1102.1",
     "@angular/cli": "~11.2.1",
     "@angular/compiler-cli": "~11.2.1",
-    "@types/json-server": "^0.14.3",
+    "@types/js-cookie": "^2.2.6",
     "@types/lowdb": "^1.0.9",
     "@types/node": "^12.11.1",
     "faker": "^5.4.0",
     "json-server": "^0.16.3",
     "jsonwebtoken": "^8.5.1",
     "lowdb": "^1.0.0",
-    "nodemon": "^2.0.7",
-    "ts-node": "^9.1.1",
     "typescript": "~4.1.2"
   }
 }

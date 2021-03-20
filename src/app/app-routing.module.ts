@@ -1,24 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './core/components/dashboard/dashboard.component';
-import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
+import { SidebarLayoutComponent } from './shared/components/sidebar-layout/sidebar-layout.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'login', loadChildren: () => import('./routes/login/login.module').then(m => m.LoginModule) },
-  { path: 'register', loadChildren: () => import('./routes/register/register.module').then(m => m.RegisterModule) },
+  { path: '', loadChildren: () => import('./routes/passport/login/login.module').then(m => m.LoginModule) },
+  { path: '', loadChildren: () => import('./routes/passport/register/register.module').then(m => m.RegisterModule) },
   {
     path: '',
-    component: DashboardComponent,
+    component: SidebarLayoutComponent,
     children: [
-      { path: 'home', loadChildren: () => import('./routes/home/home.module').then(m => m.HomeModule) }
+      { path: '', loadChildren: () => import('./routes/dashboard/home/home.module').then(m => m.HomeModule) },
+      { path: '', loadChildren: () => import('./routes/dashboard/user/user.module').then(m => m.UserModule) },
+      { path: '', loadChildren: () => import('./routes/dashboard/role/role.module').then(m => m.RoleModule) }
     ]
   },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', redirectTo: './routes/exception/404.html' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

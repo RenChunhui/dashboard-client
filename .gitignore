@@ -12,7 +12,6 @@
 
 # profiling files
 chrome-profiler-events*.json
-speed-measure-plugin*.json
 
 # IDEs and editors
 /.idea
@@ -45,7 +44,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Lock file
 package-lock.json
 yarn.lock
-
-db.json

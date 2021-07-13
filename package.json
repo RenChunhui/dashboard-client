@@ -1,36 +1,32 @@
 {
-  "name": "angular-dashboard",
+  "name": "dashboard-client",
   "version": "0.0.0",
   "scripts": {
-    "start": "ng serve --open",
+    "ng": "ng",
+    "start": "ng serve",
     "build": "ng build",
-    "mocks": "node mocks/index.js"
+    "watch": "ng build --watch --configuration development"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~11.2.1",
-    "@angular/common": "~11.2.1",
-    "@angular/compiler": "~11.2.1",
-    "@angular/core": "~11.2.1",
-    "@angular/forms": "~11.2.1",
-    "@angular/platform-browser": "~11.2.1",
-    "@angular/platform-browser-dynamic": "~11.2.1",
-    "@angular/router": "~11.2.1",
-    "ng-zorro-antd": "^11.2.0",
+    "@angular/animations": "~12.1.1",
+    "@angular/common": "~12.1.1",
+    "@angular/compiler": "~12.1.1",
+    "@angular/core": "~12.1.1",
+    "@angular/forms": "~12.1.1",
+    "@angular/platform-browser": "~12.1.1",
+    "@angular/platform-browser-dynamic": "~12.1.1",
+    "@angular/router": "~12.1.1",
+    "ng-zorro-antd": "^12.0.1",
     "rxjs": "~6.6.0",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.11.3"
+    "tslib": "^2.2.0",
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1102.1",
-    "@angular/cli": "~11.2.1",
-    "@angular/compiler-cli": "~11.2.1",
+    "@angular-devkit/build-angular": "~12.1.1",
+    "@angular/cli": "~12.1.1",
+    "@angular/compiler-cli": "~12.1.1",
     "@types/node": "^12.11.1",
-    "docsify": "^4.12.1",
-    "faker": "^5.5.3",
-    "json-server": "^0.16.3",
-    "jsonwebtoken": "^8.5.1",
-    "lowdb": "^1.0.0",
-    "typescript": "~4.1.2"
+    "typescript": "~4.3.2"
   }
 }

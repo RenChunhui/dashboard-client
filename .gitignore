@@ -47,3 +47,5 @@ Thumbs.db
 # Lock file
 package-lock.json
 yarn.lock
+
+.env.*

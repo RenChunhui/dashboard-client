@@ -1,0 +1,37 @@
+$header-height: 48px !default;
+$slider-width: 220px !default;
+
+app-toolbar,
+app-slider,
+app-stage,
+app-panel {
+  position: fixed;
+}
+
+app-boolbar {
+  top: 0;
+  right: 0;
+  left: 0;
+  height: $header-height;
+}
+
+app-slider {
+  top: $header-height;
+  bottom: 0;
+  left: 0;
+  width: $slider-width;
+}
+
+app-stage {
+  top: $header-height;
+  right: $slider-width;
+  bottom: 0;
+  left: $slider-width;
+}
+
+app-panel {
+  top: $header-height;
+  right: 0;
+  bottom: 0;
+  width: $slider-width;
+}

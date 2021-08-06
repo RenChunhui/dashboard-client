@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { SharedModule } from "src/app/shared/shared.module";
 import { FormBuilderComponent } from "./form-builder.component";
 import { PanelComponent } from "./layouts/panel/panel.component";
 import { SliderComponent } from "./layouts/slider/slider.component";
@@ -12,6 +13,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    SharedModule,
     RouterModule.forChild(routes)
   ],
   declarations: [

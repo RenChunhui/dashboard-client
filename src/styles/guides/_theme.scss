@@ -1,0 +1,11 @@
+@use '../helpers/variables';
+
+@each $key,$value in variables.$theme-values {
+  .text-#{$key} {
+    color: $value;
+  }
+
+  .bg-#{$key} {
+    background-color: $value;
+  }
+}

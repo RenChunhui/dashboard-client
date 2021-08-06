@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use 'styles/core/root';
+
+@use 'styles/guides/theme';
+@use 'styles/guides/sizing';

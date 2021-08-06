@@ -1,0 +1,13 @@
+@use '../helpers/variables';
+
+@each $key,$value in variables.$width-values {
+  .w-#{$key} {
+    width: $value;
+  }
+}
+
+@each $key,$value in variables.$height-values {
+  .h-#{$key} {
+    height: $value;
+  }
+}

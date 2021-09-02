@@ -1,0 +1,30 @@
+// Theme
+//
+// 主题颜色
+$theme-values: (
+  primary: #0f62fe,
+  error: #da1e28,
+  success: #198038,
+  warning: #f1c21b,
+  info: #0043ce,
+  surface: #f4f4f4
+) !default;
+
+// Sizing
+//
+// 宽高变量
+
+$width-values:(
+  auto: auto,
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+  screen: 100vw
+) !default;
+
+$height-values:(
+  auto: auto,
+  100: 100%,
+  screen: 100vh
+) !default;

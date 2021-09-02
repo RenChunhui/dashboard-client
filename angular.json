@@ -106,9 +106,21 @@
           "options": {
             "browserTarget": "dashboard-client:build"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "dashboard-client"
+  "defaultProject": "dashboard-client",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
